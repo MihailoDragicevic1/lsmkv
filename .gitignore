@@ -1,0 +1,20 @@
+# Build artifacts
+*.exe
+
+# IDE files
+.idea/
+.vscode/
+
+# Local runtime data
+data/
+
+# Local notes excluded from the repository
+HANDOFF.md
+PROJECT_STATUS.md
+# Local distributed-cluster test data
+data-manual-test/
+data-node1/
+data-node2/
+data-node3/
+# Generated demo/runtime storage data
+demo-data/

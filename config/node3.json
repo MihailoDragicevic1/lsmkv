@@ -1,0 +1,27 @@
+{
+  "node_id": "node-3",
+  "listen_addr": "127.0.0.1:18083",
+  "seed_nodes": [
+    { "node_id": "node-1", "listen_addr": "127.0.0.1:18081" },
+    { "node_id": "node-2", "listen_addr": "127.0.0.1:18082" }
+  ],
+  "storage": {
+    "data_dir": "./data-node3",
+    "memtable_max_bytes": 67108864,
+    "max_immutable_tables": 2,
+    "block_size": 8192,
+    "bloom_false_positive": 0.01,
+    "wal_fsync_every_n": 1,
+    "wal_segment_roll_bytes": 67108864,
+    "compression": "off",
+    "log_level": "info",
+    "l0_compaction_trigger": 8,
+    "size_tiered_fan_in": 4,
+    "size_tiered_size_ratio": 2.0,
+    "tombstone_grace_seconds": 86400,
+    "l0_stop_writes": 20
+  },
+  "replication_factor": 3,
+  "write_quorum": 2,
+  "read_quorum": 2
+}

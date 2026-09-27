@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package lsmkv.v1;
+
+// Generated Go kod koristi ovaj paket kada pravi gRPC poruke i servisne interfejse.
+option go_package = "lsmkv/proto";
+
+// KVService definiše javni gRPC API koji klijenti i drugi node-ovi koriste za rad sa ključevima.
+service KVService {
+  rpc Put(PutRequest) returns (PutResponse);
+  rpc Get(GetRequest) returns (GetResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+// PutRequest nosi binarni ključ i vrednost za upis.
+message PutRequest {
+  // bytes se koristi jer LSM podržava proizvoljne binarne ključeve.
+  bytes key = 1;
+  bytes value = 2;
+
+  // forwarded označava zahtev koji je drugi node prosledio odgovornom node-u.
+  // Server ga koristi da razlikuje spoljne zahteve od internog rutiranja.
+  bool forwarded = 3;
+}
+
+// PutResponse je prazan jer uspešan RPC već potvrđuje da je upis prihvaćen.
+message PutResponse {}
+
+// GetRequest nosi ključ koji treba pročitati.
+message GetRequest {
+  bytes key = 1;
+
+  // forwarded sprečava da se interno prosleđen zahtev ponovo rutira kroz cluster.
+  bool forwarded = 2;
+}
+
+// GetResponse vraća binarnu vrednost pronađenog ključa.
+message GetResponse {
+  bytes value = 1;
+}
+
+// DeleteRequest nosi ključ za koji treba upisati delete/tombstone zapis.
+message DeleteRequest {
+  bytes key = 1;
+
+  // forwarded označava da zahtev dolazi od drugog node-a u cluster-u.
+  bool forwarded = 2;
+}
+
+// DeleteResponse je prazan jer uspešan RPC potvrđuje prihvaćen delete.
+message DeleteResponse {}

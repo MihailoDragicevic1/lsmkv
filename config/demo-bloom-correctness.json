@@ -1,0 +1,16 @@
+{
+  "data_dir": "./demo-data/bloom-correctness",
+  "memtable_max_bytes": 1048576,
+  "max_immutable_tables": 2,
+  "block_size": 128,
+  "bloom_false_positive": 0.01,
+  "wal_fsync_every_n": 1,
+  "wal_segment_roll_bytes": 1048576,
+  "compression": "off",
+  "log_level": "info",
+  "l0_compaction_trigger": 8,
+  "size_tiered_fan_in": 4,
+  "size_tiered_size_ratio": 2.0,
+  "tombstone_grace_seconds": 86400,
+  "l0_stop_writes": 20
+}

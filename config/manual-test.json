@@ -1,0 +1,16 @@
+{
+  "data_dir": "data-manual-test",
+  "memtable_max_bytes": 128,
+  "max_immutable_tables": 4,
+  "block_size": 4096,
+  "bloom_false_positive": 0.01,
+  "wal_fsync_every_n": 1,
+  "wal_segment_roll_bytes": 1048576,
+  "compression": "off",
+  "log_level": "info",
+  "l0_compaction_trigger": 2,
+  "size_tiered_fan_in": 2,
+  "size_tiered_size_ratio": 2.0,
+  "tombstone_grace_seconds": 0,
+  "l0_stop_writes": 0
+}
